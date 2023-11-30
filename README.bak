@@ -1,6 +1,8 @@
+#**SOFTWARE UART LIBRARY**
+
 This is a SWUART, so an UART emulated by software that can be used in contexts
 where HW UART is not available or a large number of slow UARTs is needed, this
-library will use basic GPIO read/write to emulate the UART I/O)
+library will use basic GPIO read/write to emulate the UART I/O
 
 With this SWUART the user can implement an ideally infinite number of UARTs that
 can transmit/receive all at the same time and only need an ISR to be called at regular
@@ -14,7 +16,7 @@ sample number corresponding to the bit center can be defined by SMPQUANTUM macro
 baud rate is then defined by the user, which has to call the SWUART_isr() function on a regular
 basis inside an ISR, each call to the isr corresponds to a quantum and so the SWUART baud is 
 defined by baud=1/(isr_frequency * BITQUANTI)
- 
 
-The SWUART is platform independent, and the user must only implement the functions of SWUART_drivers.h
-to port it to another platform, this also allows testing using a simulated environment on a laptop
+> [!TIP]
+> The SWUART is platform independent, and the user must only implement the functions of SWUART_drivers.h
+> to port it to another platform, this also allows testing using a simulated environment on a laptop

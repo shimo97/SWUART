@@ -1,4 +1,4 @@
-#**SOFTWARE UART LIBRARY**
+# SOFTWARE UART LIBRARY
 
 This is a SWUART, so an UART emulated by software that can be used in contexts
 where HW UART is not available or a large number of slow UARTs is needed, this
@@ -18,5 +18,4 @@ basis inside an ISR, each call to the isr corresponds to a quantum and so the SW
 defined by baud=1/(isr_frequency * BITQUANTI)
 
 > [!TIP]
-> The SWUART is platform independent, and the user must only implement the functions of SWUART_drivers.h
-> to port it to another platform, this also allows testing using a simulated environment on a laptop
+> The SWUART is platform independent, and the user must only implement the functions of SWUART_drivers.h to port it to another platform, this also allows testing using a simulated environment on a laptop.
