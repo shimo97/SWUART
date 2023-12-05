@@ -4,7 +4,8 @@
 //neither SWUART for a certain amount of time, the arduino will consider the other as dead
 //and turn on an LED to signal the condition.
 
-#include "SWUART.h"
+#include "src/SWUART.h"
+
 #define WAKE 101 //wake code
 #define OTHERLED 9 //other led pin
 #define WAITTIME 500 //timeout to consider the other dead

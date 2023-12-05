@@ -1,15 +1,5 @@
 #include "myList.h"
 
-/* function to init a a list by assigning memory locations to it
- * arguments:
- * head - the list head
- * listBuff - memory buffer that contains the list element structures, can be NULL if bufflen=0
- * dataBuff - memory buffer that contains data objects, can be NULL if bufflen=0
- * bufflen - length of the two memory buffers (number of objects on listBuff and dataBuff, must be the same),
- *          if this argument is =0, the list will be initialized as an empty list
- * dataSize - size of the object type inside dataBuff (bytes)
- * WARNING: this function must be called at least one time before using the list
- */
 void initList(list_head *head,list_e *listBuff,void *dataBuff,int bufflen, int dataSize){
     GETHEADP(head)=NULL; //first resetting head pointer
 
@@ -37,13 +27,10 @@ void initList(list_head *head,list_e *listBuff,void *dataBuff,int bufflen, int d
             tmpptr+=dataSize; //inrementing pointer of dataSize
         }
     }
+	
+	return;
 }
 
-
-/* function to append an element to the list tail
- * the element must already exist inside a proper memory
- * location and its pointer passed to the function
- */
 void appendTail(list_head *head, list_e *el){
   if(GETHEADP(head)==NULL){ //if list is empty
     GETHEADP(head)=el; //new element is head
@@ -61,22 +48,11 @@ void appendTail(list_head *head, list_e *el){
   }
 }
 
-/* function to append an element to the list head
- * the element must already exist inside a proper memory
- * location and its pointer passed to the function
- */
 void appendHead(list_head *head, list_e *el){
   appendTail(head,el); //inserting element into list
   GETHEADP(head)=el; //new element is head
 }
 
-/* function to remove one element from a list
- * WARNING: this function doesn't check if the element is
- * really part of the list, so if an element outside the list is
- * passed the behavior is undefined
- * (use removeElement_safe() to avoid this problem)
- *
- */
 void removeElement(list_head *head, list_e *toRem){
   list_e * tmpPrev, *tmpNext;
   tmpPrev=(*toRem).prev; //saving previous and next pointers
@@ -100,17 +76,6 @@ void removeElement(list_head *head, list_e *toRem){
   (*toRem).next=NULL;
 }
 
-/* function to remove one element from a list
- * diffrently from removeElement(), this function
- * will check that the element is actually part of
- * the list (but this requires scanning the list so
- * is way slower)
- *
- * return:
- * 0 - success
- * 1 - failure, element is not part of the list
- *
- */
 int removeElement_safe(list_head *head, list_e *toRem){
   int ret=1;
   if(GETHEADP(head)!=NULL){ //if list is not empty
@@ -132,14 +97,6 @@ int removeElement_safe(list_head *head, list_e *toRem){
   return ret;
 }
 
-/* function to remove an element from the list head
- * the element must already exist inside a proper memory
- * location and its pointer passed to the function
- *
- * return:
- * -pointer to the removed element
- * -NULL if list is empty
- */
 list_e * removeHead(list_head *head){
   list_e *ret=NULL;
   if(GETHEADP(head)!=NULL){ //if the list is not empty
@@ -149,14 +106,6 @@ list_e * removeHead(list_head *head){
   return ret;
 }
 
-/* function to remove an element from the list tail
- * the element must already exist inside a proper memory
- * location and its pointer passed to the function
- *
- * return:
- * -pointer to the removed element
- * -NULL if list is empty
- */
 list_e * removeTail(list_head *head){
   list_e *ret=NULL;
   if(GETHEADP(head)!=NULL){ //if the list is not empty
@@ -166,12 +115,6 @@ list_e * removeTail(list_head *head){
   return ret;
 }
 
-/* this function will merge two lists, by moving all the elements
- * of the list "fromHead" to the tail of list "toHead"
- * this function is extremey faster than removing/appending all the single
- * elements from the lists because will only redirect the proper pointers
- *
- */
 void mergeList(list_head *fromHead,list_head *toHead){
     if(GETHEADP(fromHead) == NULL){ //if from list is empty
       return;
