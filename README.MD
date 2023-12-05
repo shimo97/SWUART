@@ -21,9 +21,10 @@ defined by baud=1/(isr_frequency * BITQUANTI)
 > The SWUART is platform independent, and the user must only implement the functions of SWUART_drivers.h to port it to another platform, this also allows testing using a simulated environment on a laptop.
 
 LAPTOP TEST
+
 To use the laptop test bench the user has to:
 - Change the extension of .cpp files in "src" to .c
-- Replace SWUART_drivers.c in src with the file present in laptop_test folder
-- Compile the src files with the main.c in laptop_test folder
+- Replace SWUART_drivers.c in "src" with the file present in "laptop_test" folder
+- Compile the src files with the main.c in "laptop_test" folder
 
-The detailed design documentation can be read here: https://docs.google.com/document/d/1tPZPz4isk9DNpgOlYeEn79jg0opF6cit/edit?usp=sharing&ouid=105474038872919333031&rtpof=true&sd=true
+The detailed design documentation can be read here: https://drive.google.com/file/d/17QffW90TGDeSP_6F9FyWKWPq4Yl3Kk1T/view?usp=sharing
